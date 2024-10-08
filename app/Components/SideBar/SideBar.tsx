@@ -21,7 +21,7 @@ function SideBar() {
     <div className="profil">
       <div className="profil-overlay"></div>
       <div className="image">
-        <Image width={70} height={70} src="/avatar.jpg" alt='profil' />
+        <Image width={70} height={70} src="/profil.jpg" alt='profil' />
       </div>
       <h2>
         <span>Emma</span>
@@ -90,6 +90,26 @@ const SideBarStyled = styled.nav`
     flex-direction: column;
     font-size: 1.2rem;
     line-height: 1.4rem;
+  }
+  
+  .image, h2 {
+    position: relative;
+    z-index: 1;
+  }
+
+  .image {
+    flex-shrink: 0;
+    display: inline-block;
+    overflow: hidden;
+    transition: all 0.55s ease;
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+  }
+
+  img {
+    border-radius: 100%;
+    transition: all 0.5 ease;
   }
 `;
 export default SideBar
