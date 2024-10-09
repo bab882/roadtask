@@ -22,11 +22,11 @@ function SideBar() {
     <div className="profile">
       <div className="profile-overlay"></div>
       <div className="image">
-        <Image width={70} height={70} src="/profil.jpg" alt='profil' />
+        <Image width={70} height={70} src="/photo.jpg" alt='profil' />
       </div>
       <h1>
-        <span>Emma</span>
-        <span>Doe</span>
+        <span>Bab</span>
+        <span>Codes</span>
       </h1>
     </div>
     <ul className="nav-items">
