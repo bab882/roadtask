@@ -7,6 +7,7 @@ import menu from "@/app/utils/menu";
 import Link from 'next/link';
 import { usePathname, useRouter } from "next/navigation";
 
+
 function SideBar() {
 
   const { theme } = useGlobalState();
@@ -18,15 +19,15 @@ function SideBar() {
   };
 
   return <SideBarStyled theme={theme}>
-    <div className="profil">
-      <div className="profil-overlay"></div>
+    <div className="profile">
+      <div className="profile-overlay"></div>
       <div className="image">
         <Image width={70} height={70} src="/profil.jpg" alt='profil' />
       </div>
-      <h2>
+      <h1>
         <span>Emma</span>
         <span>Doe</span>
-      </h2>
+      </h1>
     </div>
     <ul className="nav-items">
       {menu.map((item) => {
@@ -53,63 +54,158 @@ const SideBarStyled = styled.nav`
   border-radius: 1rem;
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
 
-  color: ${(props)=> props.theme.colorGrey3};
+  color: ${(props) => props.theme.colorGrey3};
 
-  .profil {
-    display: flex;
-    align-items: center;
+  .profile {
     margin: 1.5rem;
     padding: 1rem 0.8rem;
     position: relative;
+
     border-radius: 1rem;
     cursor: pointer;
-    font-weight: 500px;
+
+    font-weight: 500;
     color: ${(props) => props.theme.colorGrey0};
-  }
-  
-  .profil-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    z-index: 0;
-    background: ${(props) => props.theme.colorBg3};
-    transition: all 10s linear;
-    border: 2px solid ${(props) => props.theme.borderColor2};
-    border-radius: 1rem;
-    opacity: 0.2;
-  }
-  
-  h2 {
+
     display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    line-height: 1.4rem;
+    align-items: center;
+  
+    .profile-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(10px);
+      z-index: 0;
+      background: ${(props) => props.theme.colorBg3};
+      transition: all 0.55s linear;
+      border-radius: 1rem;
+      border: 2px solid ${(props) => props.theme.borderColor2};
+
+      opacity: 0.2;
+    }
+  
+    h1 {
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+
+      line-height: 1.4rem;
+    }
+
+    .image,
+    h1 {
+      position: relative;
+      z-index: 1;
+    }
+
+    .image {
+      flex-shrink: 0;
+      display: inline-block;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      border-radius: 100%;
+
+      width: 70px;
+      height: 70px;
+    }
+
+    img {
+      border-radius: 100%;
+      transition: all 0.5s ease;
+    }
+
+    > h2 {
+      margin-left: 0.8rem;
+      font-size: clamp(1.2rem, 4vw, 1.4rem);
+      line-height: 100%;
+    }
+
+    &:hover {
+      .profile-overlay {
+        opacity: 1;
+        border: 2px solid ${(props) => props.theme.borderColor2};
+      }
+
+      img {
+        transform: scale(1.1);
+      }
+    }
   }
   
-  .image, h2 {
+  .nav-item {
     position: relative;
-    z-index: 1;
+    padding: 0.8rem 1rem 0.9rem 2.1rem;
+    margin: 0.3rem 0;
+
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    cursor: pointer;
+    align-items: center;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: ${(props) => props.theme.activeNavLinkHover};
+      z-index: 1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 0%;
+      background-color: ${(props) => props.theme.colorGreenDark};
+
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    i {
+      display: flex;
+      align-items: center;
+      color: ${(props) => props.theme.colorIcons};
+    }
+
+    a {
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+      z-index: 2;
+    }
+
+    &:hover {
+        &::after {
+        width: 100%;
+      }
+    }
   }
 
-  .image {
-    flex-shrink: 0;
-    display: inline-block;
-    overflow: hidden;
-    transition: all 0.55s ease;
-    border-radius: 100%;
-    height: 70px;
-    width: 70px;
+  .active {
+    background-color: ${(props) => props.theme.activeNavLink};
+
+    i,
+    a {
+      color: ${(props) => props.theme.colorIcons2};
+    }
+  }
+  
+  .active::before {
+    width: 0.3rem;
   }
 
-  img {
-    border-radius: 100%;
-    transition: all 0.5 ease;
+  > button {
+    margin: 1.5rem;
   }
 `;
 export default SideBar
