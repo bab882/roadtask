@@ -42,7 +42,7 @@ export default function RootLayout({
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <ContextProvider>
             <GlobalStyleProvider>
-              {userId && <SideBar />}
+              {/* {userId && <SideBar />} */}
               <SideBar />
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>

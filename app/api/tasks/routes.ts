@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs";
-import { error } from "console";
+import { auth } from "@clerk/nextjs/server";
+import prisma from "@/app/utils/connect";
 
 export async function POST(req: Request){
     try {
@@ -32,6 +32,18 @@ export async function POST(req: Request){
                 });
         }
 
+        const task = await prisma.task.create({
+            data: {
+                title,
+                description,
+                date,
+                isCompleted: completed,
+                isImportant: important,
+                userId,
+            }
+        });
+
+        return NextResponse.json(task);
 
     } catch (error) {
         console.log("ERROR CREATING TASK: ", error);
