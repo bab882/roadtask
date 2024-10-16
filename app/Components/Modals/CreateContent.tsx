@@ -45,7 +45,7 @@ function CreateContent() {
         </div>
         <div className="input-control">
             <label htmlFor="description">Description</label>
-            <textarea 
+            <textarea style={{color: 'green'}}
                 id='description'
                 value={description}
                 name='description'
