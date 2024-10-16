@@ -25,6 +25,8 @@ function CreateContent() {
             case "important":
                 setImportant(e.target.checked);
                 break;
+            default:
+                break;
         }
     };
 
