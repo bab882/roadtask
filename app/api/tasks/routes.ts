@@ -42,7 +42,7 @@ export async function POST(req: Request){
                 userId,
             }
         });
-
+        console.log("Task created: ", task);
         return NextResponse.json(task);
 
     } catch (error) {
@@ -53,6 +53,21 @@ export async function POST(req: Request){
 
 export async function GET(req: Request){
     try {
+        const { userId } = auth();
+
+        if(!userId) {
+            NextResponse.json(
+                {
+                    error: "Unauthorized",
+                    status: 401
+                }
+            );
+        }
+        const task = await prisma.task.findMany({
+            where: {
+                userId
+            },
+        });
     } catch (error) {
         console.log("ERROR GETTING TASK: ", error);
         return NextResponse.json({error: "Error updating task", status: 500});

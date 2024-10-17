@@ -64,7 +64,7 @@ function CreateContent() {
             <h1>Create a Task</h1>
             <div className="input-control">
                 <label htmlFor="title">Title</label>
-                <input 
+                <input style={{color: 'green'}}
                     type="text" 
                     id='title'
                     value={title}
@@ -87,7 +87,7 @@ function CreateContent() {
             </div>
             <div className="input-control">
                 <label htmlFor="date">Date</label>
-                <input 
+                <input style={{color: 'green'}}
                     type="date" 
                     id='date'
                     value={date}
@@ -98,7 +98,7 @@ function CreateContent() {
             </div>
             <div className="input-control">
                 <label htmlFor="completed">Completed</label>
-                <input 
+                <input style={{color: 'green'}}
                     type="checkbox" 
                     id='completed'
                     value={completed.toString()}
@@ -107,7 +107,7 @@ function CreateContent() {
             </div>
             <div className="input-control">
                 <label htmlFor="important">Important</label>
-                <input 
+                <input style={{color: 'green'}}
                     type="checkbox" 
                     id='important'
                     value={important.toString()}
