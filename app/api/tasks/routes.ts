@@ -1,6 +1,7 @@
+import prisma from "@/app/utils/connect";
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import prisma from "@/app/utils/connect";
+
 
 export async function POST(req: Request){
     try {
