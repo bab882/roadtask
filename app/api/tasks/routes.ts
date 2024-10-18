@@ -66,9 +66,13 @@ export async function GET(req: Request){
         }
         const task = await prisma.task.findMany({
             where: {
-                userId
+                userId,
             },
         });
+
+        console.log("TASKS", tasks);
+        return NextResponse.json(tasks);
+        
     } catch (error) {
         console.log("ERROR GETTING TASK: ", error);
         return NextResponse.json({error: "Error updating task", status: 500});
