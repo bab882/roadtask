@@ -1,6 +1,5 @@
 "use client";
 import { useGlobalState } from "@/app/context/globalProvider";
-
 import React from "react";
 import styled from "styled-components";
 
@@ -37,7 +36,7 @@ function Button({
     <ButtonStyled
       type={type}
       style={{
-        background: background,
+        background: background || theme.colorBg3,
         padding: padding || "0.5rem 1rem",
         borderRadius: borderRad || "0.5rem",
         fontWeight: fw || "500",
@@ -67,7 +66,7 @@ const ButtonStyled = styled.button`
   i {
     margin-right: 1rem;
     color: ${(props) => props.theme.colorGrey2};
-    font-size: 1.5rem;
+    font-size: 1rem;
     transition: all 0.55s ease-in-out;
   }
 
