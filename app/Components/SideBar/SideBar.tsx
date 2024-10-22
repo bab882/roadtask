@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from "next/navigation";
 import Button from '../Button/Button';
 import { logout } from '@/app/utils/Icons';
-import { SignIn, useClerk } from '@clerk/nextjs';
+import { UserButton, useClerk } from '@clerk/nextjs';
 
 
 function SideBar() {
@@ -28,6 +28,9 @@ function SideBar() {
       <div className="image">
         <Image width={70} height={70} src="/photo.jpg" alt='profil' />
       </div>
+      <div className="user-btn">
+        <UserButton />
+      </div>
       <h1>
         <span>Bab</span>
         <span>Codes</span>
@@ -37,7 +40,9 @@ function SideBar() {
       {menu.map((item) => {
         const link = item.link;
         return (
-          <li className={`nav-item ${pathname === link ? "active" : ""}`} onClick={() => {
+          <li 
+            key={item.id}
+            className={`nav-item ${pathname === link ? "active" : ""}`} onClick={() => {
             handleClick(link);
           }}>
             {item.icon}

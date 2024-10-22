@@ -6,7 +6,7 @@ import SideBar from "./Components/SideBar/SideBar";
 import GlobalStyleProvider from "./providers/GlobalStyleProvider";
 import ContextProvider from "./providers/ContextProvider";
 import { auth } from '@clerk/nextjs/server';
-
+import NextTopLoader from "nextjs-toploader";
 
 
 
@@ -34,6 +34,12 @@ export default function RootLayout({
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         </head>
         <body className={nunito.className}>
+          <NextTopLoader 
+            height={2}
+            color="#27AE60"
+            easing="cubic-bezier(0.53,0.21,0,1)"
+            showSpinner={false}
+          />
           <ContextProvider>
             <GlobalStyleProvider>
              {/* {userId ? <SideBar /> : null}  */}

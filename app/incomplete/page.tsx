@@ -4,12 +4,12 @@ import { useGlobalState } from '../context/globalProvider';
 import Tasks from '../Components/Tasks/Tasks';
 
 function page() {
-  
-  const { completedTasks } = useGlobalState();
-  
-  return (
-    <Tasks title="Completed Tasks" tasks={completedTasks} />
-  )
+
+    const { incompleteTasks } = useGlobalState();
+
+    return (
+        <Tasks title="Incomplete Tasks" tasks={incompleteTasks} />
+    )
 }
 
-export default page
+export default page;

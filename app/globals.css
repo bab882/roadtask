@@ -9,3 +9,19 @@ body {
   font-size: 17px;
   color: #fff;
 }
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #dbe1e8;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+}
