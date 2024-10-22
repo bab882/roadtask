@@ -23,4 +23,4 @@ const GlobalStyles = styled.div`
       gap: 1.5rem;
     }
 `;
-export default GlobalStyleProvider
+export default GlobalStyleProvider;

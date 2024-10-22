@@ -10,18 +10,22 @@ interface Props {
 function ContextProvider({children}): Props {
 
   const [isReady, setIsReady] = React.useState(false);
+
   React.useEffect(() => {
     setTimeout(() => {
       setIsReady(true);
     }, 10);
   }, []);
+  
   if(!isReady){
     return null;
   }
 
-  return <GlobalProvider>
-    <Toaster />
-    {children}
-    </GlobalProvider>;
+  return (
+    <GlobalProvider>
+      <Toaster />
+      {children}
+    </GlobalProvider>
+  );
 }
-export default ContextProvider
+export default ContextProvider;

@@ -36,7 +36,8 @@ export default function RootLayout({
         <body className={nunito.className}>
           <ContextProvider>
             <GlobalStyleProvider>
-              {/* {userId && <SideBar />} */}
+             {/* {userId ? <SideBar /> : null}  */}
+              
               <SideBar />
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>

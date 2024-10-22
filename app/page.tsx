@@ -8,3 +8,4 @@ export default function Home() {
 
   return <Tasks title="All Taks" tasks={tasks} />;
 }
+  
