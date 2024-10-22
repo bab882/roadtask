@@ -5,9 +5,10 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import styled from "styled-components";
 import Button from "../Button/Button";
-import { add } from "@/app/utils/Icons";
+import { plus } from "@/app/utils/Icons";
 
 function CreateContent() {
+  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -127,7 +128,7 @@ function CreateContent() {
         <Button
           type="submit"
           name="Create Task"
-          icon={add}
+          icon={plus}
           padding={"0.8rem 2rem"}
           borderRad={"0.8rem"}
           fw={"500"}
