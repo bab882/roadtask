@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await auth(); // Ajout du await
+    const { userId } = await auth();
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const { userId } = await auth(); // Ajout du await
+    const { userId } = await auth();
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
@@ -67,7 +67,8 @@ export async function GET(req: Request) {
 
 export async function PUT(req: Request) {
   try {
-    const { userId } = await auth(); // Ajout du await
+
+    const { userId } = await auth();
     const { isCompleted, id } = await req.json();
 
     if (!userId) {
@@ -82,10 +83,10 @@ export async function PUT(req: Request) {
         isCompleted,
       },
     });
-
     return NextResponse.json(task);
+    
   } catch (error) {
     console.error("ERROR UPDATING TASK: ", error);
-    return NextResponse.json({ error: "Error updating task", status: 500 }); // Correction du message d'erreur
+    return NextResponse.json({ error: "Error updating task", status: 500 }); 
   }
 }

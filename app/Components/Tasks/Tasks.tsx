@@ -5,6 +5,7 @@ import styled from "styled-components";
 import CreateContent from "../Modals/CreateContent";
 import TaskItem from "../TaskItem/TaskItem";
 import { add, plus } from "@/app/utils/Icons";
+import Modal from "../Modals/Modal";
 
 
 interface Props {
@@ -13,11 +14,11 @@ interface Props {
 }
 
 function Tasks({ title, tasks }: Props) {
-  const { theme, isLoading } = useGlobalState();
+  const { theme, isLoading, openModal, modal } = useGlobalState();
 
   return (
     <TaskStyled theme={theme}>
-      <CreateContent />
+      {modal && <Modal content={<CreateContent />} />}
       <h1>{title}</h1>
 
       <button className="btn-rounded">
@@ -35,8 +36,8 @@ function Tasks({ title, tasks }: Props) {
             id={task.id}
           />
         ))}
-        <button className="create-task">
-          {add}
+        <button className="create-task" onClick={openModal}>
+          {plus}
           Add New Task
         </button>
       </div>
