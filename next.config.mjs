@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['localhost', 'img.clerk.com']
+        domains: ["localhost:3000", "img.clerk.com"],
     }
 };
 

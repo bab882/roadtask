@@ -84,6 +84,7 @@ export const GlobalProvider= ({children}) => {
             modal,
             openModal,
             closeModal,
+            allTasks,
         }}>
             <GlobalUpdateContext.Provider value={{}}>
                 {children}

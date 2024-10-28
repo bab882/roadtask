@@ -95,7 +95,7 @@ function CreateContent() {
       </div>
       <div className="input-control">
         <label htmlFor="date">Date</label>
-        <input
+        <input 
           value={date}
           onChange={handleChange("date")}
           type="date"
@@ -145,7 +145,7 @@ const CreateContentStyled = styled.form`
     font-size: clamp(1.2rem, 5vw, 1.6rem);
     font-weight: 600;
   }
-
+  
   color: ${(props) => props.theme.colorGrey1};
 
   .input-control {

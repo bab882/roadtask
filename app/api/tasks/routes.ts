@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await auth();
+    const { userId } = auth();
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
     }
 
-    const { title, description, date, completed = false, important = false } = await req.json();
+    const { title, description, date, completed, important } = await req.json();
 
     if (!title || !description || !date) {
       return NextResponse.json({
@@ -39,14 +39,14 @@ export async function POST(req: Request) {
 
     return NextResponse.json(task);
   } catch (error) {
-    console.error("ERROR CREATING TASK: ", error);
+    console.log("ERROR CREATING TASK: ", error);
     return NextResponse.json({ error: "Error creating task", status: 500 });
   }
 }
 
 export async function GET(req: Request) {
   try {
-    const { userId } = await auth();
+    const { userId } = auth();
 
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
@@ -60,15 +60,14 @@ export async function GET(req: Request) {
 
     return NextResponse.json(tasks);
   } catch (error) {
-    console.error("ERROR GETTING TASKS: ", error);
-    return NextResponse.json({ error: "Error getting tasks", status: 500 });
+    console.log("ERROR GETTING TASKS: ", error);
+    return NextResponse.json({ error: "Error updating task", status: 500 });
   }
 }
 
 export async function PUT(req: Request) {
   try {
-
-    const { userId } = await auth();
+    const { userId } = auth();
     const { isCompleted, id } = await req.json();
 
     if (!userId) {
@@ -83,10 +82,10 @@ export async function PUT(req: Request) {
         isCompleted,
       },
     });
+
     return NextResponse.json(task);
-    
   } catch (error) {
-    console.error("ERROR UPDATING TASK: ", error);
-    return NextResponse.json({ error: "Error updating task", status: 500 }); 
+    console.log("ERROR UPDATING TASK: ", error);
+    return NextResponse.json({ error: "Error deleting task", status: 500 });
   }
 }

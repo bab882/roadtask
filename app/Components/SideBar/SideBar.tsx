@@ -2,12 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useGlobalState } from '@/app/context/globalProvider';
-import Image from 'next/image';
+import Image from "next/image";
 import menu from "@/app/utils/menu";
 import Link from 'next/link';
 import { usePathname, useRouter } from "next/navigation";
 import Button from '../Button/Button';
-import { arrowLeft, bars, logout } from "@/app/utils/Icons";
+import { logout } from "@/app/utils/Icons";
 import { UserButton, useClerk, useUser } from '@clerk/nextjs';
 
 
@@ -33,12 +33,12 @@ function SideBar() {
     <div className="profile">
       <div className="profile-overlay"></div>
       <div className="image">
-        <Image width={70} height={70} src={imageUrl} alt='profil' />
+        <Image width={60} height={60} src={imageUrl} alt="profile" />
       </div>
       <div className="user-btn absolute z-20 top-0 w-full h-full">
         <UserButton />
       </div>
-      <h1 className="capitalize">
+      <h1 className="">
         { firstName } {lastName} 
       </h1>
     </div>
@@ -87,16 +87,37 @@ const SideBarStyled = styled.nav`
 
   color: ${(props) => props.theme.colorGrey3};
 
+  .toggle-nav {
+    display: none;
+    padding: 0.8rem 0.9rem;
+    position: absolute;
+    right: -69px;
+    top: 1.8rem;
+
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    background-color: ${(props) => props.theme.colorBg2};
+    border-right: 2px solid ${(props) => props.theme.borderColor2};
+    border-top: 2px solid ${(props) => props.theme.borderColor2};
+    border-bottom: 2px solid ${(props) => props.theme.borderColor2};
+  }
+
   .user-btn {
     .cl-rootBox {
       width: 100%;
       height: 100%;
 
-      .cl-userButtonTrigger {
+      .cl-userButtonBox {
+        width: 100%;
+        height: 100%;
+
+        .cl-userButtonTrigger {
           width: 100%;
           height: 100%;
           opacity: 0;
         }
+      }
     }
   }
 
@@ -129,7 +150,7 @@ const SideBarStyled = styled.nav`
 
       opacity: 0.2;
     }
-  
+
     h1 {
       font-size: 1.2rem;
       display: flex;
@@ -153,14 +174,14 @@ const SideBarStyled = styled.nav`
 
       width: 70px;
       height: 70px;
+
+      img {
+        border-radius: 100%;
+        transition: all 0.5s ease;
+      }
     }
 
-    img {
-      border-radius: 100%;
-      transition: all 0.5s ease;
-    }
-
-    > h2 {
+    > h1 {
       margin-left: 0.8rem;
       font-size: clamp(1.2rem, 4vw, 1.4rem);
       line-height: 100%;
@@ -177,7 +198,7 @@ const SideBarStyled = styled.nav`
       }
     }
   }
-  
+
   .nav-item {
     position: relative;
     padding: 0.8rem 1rem 0.9rem 2.1rem;
@@ -191,8 +212,8 @@ const SideBarStyled = styled.nav`
     &::after {
       position: absolute;
       content: "";
-      top: 0;
       left: 0;
+      top: 0;
       width: 0;
       height: 100%;
       background-color: ${(props) => props.theme.activeNavLinkHover};
@@ -203,14 +224,21 @@ const SideBarStyled = styled.nav`
     &::before {
       position: absolute;
       content: "";
-      top: 0;
       right: 0;
-      height: 100%;
+      top: 0;
       width: 0%;
+      height: 100%;
       background-color: ${(props) => props.theme.colorGreenDark};
 
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
+    }
+
+    a {
+      font-weight: 500;
+      transition: all 0.3s ease-in-out;
+      z-index: 2;
+      line-height: 0;
     }
 
     i {
@@ -219,14 +247,8 @@ const SideBarStyled = styled.nav`
       color: ${(props) => props.theme.colorIcons};
     }
 
-    a {
-      font-weight: 500;
-      transition: all 0.3s ease-in-out;
-      z-index: 2;
-    }
-
     &:hover {
-        &::after {
+      &::after {
         width: 100%;
       }
     }
@@ -240,7 +262,7 @@ const SideBarStyled = styled.nav`
       color: ${(props) => props.theme.colorIcons2};
     }
   }
-  
+
   .active::before {
     width: 0.3rem;
   }
