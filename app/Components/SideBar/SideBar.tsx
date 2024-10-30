@@ -13,7 +13,7 @@ import { UserButton, useClerk, useUser } from '@clerk/nextjs';
 
 function SideBar() {
 
-  const { theme, collapsed } = useGlobalState();
+  const { theme, collapsed, collapseMenu } = useGlobalState();
   const { signOut } = useClerk();
 
   const { user } = useUser();
@@ -30,8 +30,8 @@ function SideBar() {
   };
 
   return (
-  <SideBarStyled theme={theme}>
-    <button className="toggle-nav">
+  <SideBarStyled theme={theme} collapsed={collapsed}>
+    <button className="toggle-nav" onClick={collapseMenu}>
       { collapsed ? bars : arrowLeft }
     </button>
     <div className="profile">
@@ -79,7 +79,7 @@ function SideBar() {
   );
 }
 
-const SideBarStyled = styled.nav`
+const SideBarStyled = styled.nav<{ collapsed: boolean }>`
   position: relative;
   width: ${(props) => props.theme.sidebarWidth};
   background-color: ${(props) => props.theme.colorBg2};
@@ -91,6 +91,8 @@ const SideBarStyled = styled.nav`
   justify-content: space-between;
 
   color: ${(props) => props.theme.colorGrey3};
+
+  
 
   .toggle-nav {
     display: none;
@@ -280,6 +282,12 @@ const SideBarStyled = styled.nav`
     position: fixed;
     height: calc(100vh - 2rem);
     z-index: 100;
+
+    transform: ${(props) => props.collapsed ? "translateX(-100%)" : "translateX(0)"};
+
+    .toggle-nav {
+      display: block !important;
+    }
   }
 `;
 export default SideBar
