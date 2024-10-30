@@ -283,7 +283,7 @@ const SideBarStyled = styled.nav<{ collapsed: boolean }>`
     height: calc(100vh - 2rem);
     z-index: 100;
 
-    transform: ${(props) => props.collapsed ? "translateX(-100%)" : "translateX(0)"};
+    transform: ${(props) => props.collapsed ? "translateX(-107%)" : "translateX(0)"};
 
     .toggle-nav {
       display: block !important;
