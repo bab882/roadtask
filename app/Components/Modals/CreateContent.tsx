@@ -145,7 +145,7 @@ const CreateContentStyled = styled.form`
     font-size: clamp(1.2rem, 5vw, 1.6rem);
     font-weight: 600;
   }
-  
+
   color: ${(props) => props.theme.colorGrey1};
 
   .input-control {
@@ -181,6 +181,16 @@ const CreateContentStyled = styled.form`
 
   .submit-btn button {
     transition: all 0.35s ease-in-out;
+
+    @media screen and (max-width: 500px) {
+      font-size: 0.9rem !important;
+      padding: 0.6rem 1rem !important;
+
+      i {
+        font-size: 1.2rem !important;
+        margin-right: 0.5rem !important;
+      }
+    }
 
     i {
       color: ${(props) => props.theme.colorGrey0};

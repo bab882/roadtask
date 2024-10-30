@@ -21,9 +21,9 @@ function Tasks({ title, tasks }: Props) {
       {modal && <Modal content={<CreateContent />} />}
       <h1>{title}</h1>
 
-      <button className="btn-rounded">
+      {/* <button className="btn-rounded">
         {plus}
-      </button>
+      </button> */}
 
       <div className="tasks grid">
         {tasks.map((task) => (
