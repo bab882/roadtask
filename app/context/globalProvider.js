@@ -14,6 +14,7 @@ export const GlobalProvider= ({children}) => {
     const [selectedTheme, setSelectedTheme] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [modal, setModal] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
 
     const [tasks, setTasks] = useState([]);
 
@@ -31,10 +32,14 @@ export const GlobalProvider= ({children}) => {
     const allTasks = async () => {
 
         setIsLoading(true);
-
         try {
             const res = await axios.get(`/api/tasks`);
-            setTasks(res.data);
+
+            const sorted = res.data.sort((a, b) => {
+                return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+            });
+            
+            setTasks(sorted);
             setIsLoading(false);
         } catch (error) {
             console.log(error);
@@ -85,6 +90,7 @@ export const GlobalProvider= ({children}) => {
             openModal,
             closeModal,
             allTasks,
+            collapsed,
         }}>
             <GlobalUpdateContext.Provider value={{}}>
                 {children}

@@ -63,7 +63,7 @@ function CreateContent() {
         closeModal();
       }
     } catch (error) {
-      toast.error("oups");
+      toast.error("une erreur est survenue");
       console.log(error);
     }
   };

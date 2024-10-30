@@ -1,6 +1,6 @@
 const nextConfig = {
     images: {
-        domains: ["localhost:3000", "img.clerk.com"],
+        domains: ["localhost", "img.clerk.com", "lh3.googleusercontent.com"]
     }
 };
 

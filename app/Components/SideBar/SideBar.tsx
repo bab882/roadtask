@@ -7,13 +7,13 @@ import menu from "@/app/utils/menu";
 import Link from 'next/link';
 import { usePathname, useRouter } from "next/navigation";
 import Button from '../Button/Button';
-import { logout } from "@/app/utils/Icons";
+import { logout, bars, arrowLeft } from "@/app/utils/Icons";
 import { UserButton, useClerk, useUser } from '@clerk/nextjs';
 
 
 function SideBar() {
 
-  const { theme } = useGlobalState();
+  const { theme, collapsed } = useGlobalState();
   const { signOut } = useClerk();
 
   const { user } = useUser();
@@ -29,7 +29,11 @@ function SideBar() {
     router.push(link);
   };
 
-  return <SideBarStyled theme={theme}>
+  return (
+  <SideBarStyled theme={theme}>
+    <button className="toggle-nav">
+      { collapsed ? bars : arrowLeft }
+    </button>
     <div className="profile">
       <div className="profile-overlay"></div>
       <div className="image">
@@ -71,7 +75,8 @@ function SideBar() {
         }}
       /> 
     </div>
-  </SideBarStyled>;
+  </SideBarStyled>
+  );
 }
 
 const SideBarStyled = styled.nav`
@@ -269,6 +274,12 @@ const SideBarStyled = styled.nav`
 
   > button {
     margin: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    height: calc(100vh - 2rem);
+    z-index: 100;
   }
 `;
 export default SideBar

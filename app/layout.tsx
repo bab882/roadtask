@@ -28,22 +28,25 @@ export default function RootLayout({
   const { userId } = auth();
 
   return (
-    <ClerkProvider >
+    <ClerkProvider>
       <html lang="en">
         <head>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          />
         </head>
         <body className={nunito.className}>
-          <NextTopLoader 
+          <NextTopLoader
             height={2}
             color="#27AE60"
             easing="cubic-bezier(0.53,0.21,0,1)"
-            showSpinner={false}
           />
           <ContextProvider>
             <GlobalStyleProvider>
-             {/* {userId ? <SideBar /> : null}  */}
-              
               <SideBar />
               <div className="w-full">{children}</div>
             </GlobalStyleProvider>
